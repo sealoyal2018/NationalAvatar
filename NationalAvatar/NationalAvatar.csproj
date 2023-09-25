@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\gq0.png" />
+    <None Remove="Resources\gq1.png" />
+    <None Remove="Resources\gq2.png" />
+    <None Remove="Resources\gq20.png" />
+    <None Remove="Resources\gq3.png" />
+    <None Remove="Resources\gq30.png" />
+    <None Remove="Resources\gq4.png" />
+    <None Remove="Resources\gq5.png" />
+    <None Remove="Resources\gq6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\gq0.png" />
+    <Resource Include="Resources\gq1.png" />
+    <Resource Include="Resources\gq2.png" />
+    <Resource Include="Resources\gq20.png" />
+    <Resource Include="Resources\gq3.png" />
+    <Resource Include="Resources\gq30.png" />
+    <Resource Include="Resources\gq4.png" />
+    <Resource Include="Resources\gq5.png" />
+    <Resource Include="Resources\gq6.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.2" />
+  </ItemGroup>
+
+</Project>
