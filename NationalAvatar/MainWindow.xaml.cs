@@ -132,6 +132,6 @@ public partial class MainWindow : HandyControl.Controls.Window
 
     private void Button_Click_2(object sender, RoutedEventArgs e)
     {
-        System.Diagnostics.Process.Start("github.com/");
+        System.Diagnostics.Process.Start("explorer.exe","https://github.com/sealoyal2018/NationalAvatar");
     }
 }
