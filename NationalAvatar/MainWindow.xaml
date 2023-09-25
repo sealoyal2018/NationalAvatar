@@ -1,30 +1,50 @@
-﻿<Window x:Class="NationalAvatar.MainWindow"
+﻿<hc:Window x:Class="NationalAvatar.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NationalAvatar"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         mc:Ignorable="d"
-        Title="MainWindow" Height="410" Width="550">
+        WindowStartupLocation="CenterScreen"
+        Title="国庆头像生成器" Height="500" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="180" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="100" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
         <Image Name="LiveImage" Width="256" Height="256" MouseLeftButtonUp="LiveImage_MouseLeftButtonUp">
             <Image.ToolTip>
                 <TextBlock>点击图像保存文件</TextBlock>
             </Image.ToolTip>
         </Image>
-        <StackPanel Grid.Column="1">
-            <Button Click="Button_Click">选择头像</Button>
-            <ListBox SelectionMode="Single" Height="300" ItemsSource="{Binding Templates}" SelectedIndex="0"  SelectionChanged="ListBox_SelectionChanged" >
-                <ListBox.ItemTemplate>
-                    <DataTemplate DataType="local:AvatarTemplate">
+        <ListView Grid.Row="1" Grid.ColumnSpan="3" SelectionMode="Single" ItemsSource="{Binding Templates}" SelectedIndex="0"  SelectionChanged="ListBox_SelectionChanged" >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate DataType="local:AvatarTemplate">
+                    <Grid>
                         <Image HorizontalAlignment="Center" Source="{Binding Path}" Height="64" Width="64" />
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Border BorderThickness="1" BorderBrush="LightGray" Grid.Column="1"  />
+        <StackPanel Margin="4" Grid.Column="2" HorizontalAlignment="Stretch">
+            <Button Height="30" HorizontalAlignment="Stretch" Click="Button_Click">选择头像</Button>
+            <Button Height="30" Name="downloadBtn" IsEnabled="false" HorizontalAlignment="Stretch" Margin="0,8,0,0"  Click="Button_Click_1">下载头像</Button>
+            <Button Height="30" HorizontalAlignment="Stretch" Margin="0,8,0,0"  Click="Button_Click_2">查看源码</Button>
         </StackPanel>
+        <ScrollViewer Grid.RowSpan="2" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Hidden" HorizontalAlignment="Right">
+            <StackPanel hc:Growl.GrowlParent="True" VerticalAlignment="Top" Margin="0,10,10,10"/>
+        </ScrollViewer>
     </Grid>
-</Window>
+</hc:Window>
